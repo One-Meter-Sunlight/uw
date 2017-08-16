@@ -2,6 +2,7 @@ package com.example.demo.service.impl;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.example.demo.entity.User;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.service.IUserService;
@@ -22,4 +23,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 		return baseMapper.selectListBySQL();
 	}
 
+	public List<User> selectList(Page<User> page){
+		return baseMapper.selectList(page);
+	}
 }
