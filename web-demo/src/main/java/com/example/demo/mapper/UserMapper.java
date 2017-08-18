@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import com.example.demo.SuperMapper;
 import com.example.demo.entity.User;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 /**
@@ -17,4 +18,7 @@ public interface UserMapper extends SuperMapper<User> {
     List<User> selectListBySQL();
 
     List<User> selectList(Pagination page);
+
+    @Select("select uid as id, username, password, role from user where username = #{username}")
+    User selectByUsername(@Param("username") String username);
 }
