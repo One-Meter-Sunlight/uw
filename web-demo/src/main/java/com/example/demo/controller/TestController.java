@@ -7,6 +7,7 @@ import com.example.demo.service.user.IUserService;
 import com.example.demo.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,10 +25,21 @@ public class TestController {
     @Autowired
     IUserService iUserService;
 
-
     @RequestMapping("/helloTest")
     public String test() {
         return JSON.toJSONString(iUserService.selectListBySQL());
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @RequestMapping("/helloworld")
+    public String helloTest() {
+        return "helloworld";
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN', 'USER')")
+    @RequestMapping("/helloworld2")
+    public String helloTest2() {
+        return "helloworld2";
     }
 
     @RequestMapping("/helloTest2")
