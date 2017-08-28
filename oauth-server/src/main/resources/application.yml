@@ -1,0 +1,36 @@
+server:
+  port: 9999
+  context-path: /uaa # 此处必须设定，否则无法获得token。
+
+#security:
+#  ignored: /css/**,/js/**,/favicon.ico,/webjars/**
+
+security:
+  basic:
+    enabled: false
+
+feign:
+  hystrix:
+    enabled: true
+
+spring:
+  redis:
+    host: 120.25.13.84
+    port: 7369
+    database: 0
+    password: abc123
+    pool:
+      max-active: 10
+      max-idle: 10
+      max-wait: -1
+      min-idle: 0
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.25.13.84:3306/bootDemo?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&tinyInt1isBit=false
+    username: root
+    password: abc123!@#
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    com.example.demo.client: DEBUG
