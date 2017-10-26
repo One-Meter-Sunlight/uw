@@ -19,11 +19,18 @@ import java.util.UUID;
  * Created by 321 on 2017/8/11.
  */
 @RestController
-@RequestMapping("/web")
 public class TestController {
 
     @Autowired
     IUserService iUserService;
+
+//    @Autowired
+//    TestUserService testUserService;
+
+//    @RequestMapping("/testFeign")
+//    public void testFeign() {
+//        testUserService.testFeign();
+//    }
 
     @RequestMapping("/helloTest")
     public String test() {

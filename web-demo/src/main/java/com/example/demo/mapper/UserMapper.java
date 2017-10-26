@@ -14,11 +14,11 @@ import org.apache.ibatis.annotations.Select;
  */
 public interface UserMapper extends SuperMapper<User> {
 
-    @Select("select uid as id, username from user")
+    @Select("select uid as id, username from a_test_user")
     List<User> selectListBySQL();
 
     List<User> selectList(Pagination page);
 
-    @Select("select uid as id, username, password, role from user where username = #{username}")
+    @Select("select uid as id, username, password, role from a_test_user where username = #{username}")
     User selectByUsername(@Param("username") String username);
 }

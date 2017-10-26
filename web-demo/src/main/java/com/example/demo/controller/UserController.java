@@ -35,7 +35,7 @@ public class UserController {
     @RequestMapping("/success")
     public String success(Model model) {
         model.addAttribute("userName", "张三");
-        return "hello";
+        return "index";
     }
 
     @RequestMapping("/")

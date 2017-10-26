@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .deleteCookies("remember-me").logoutSuccessUrl("/")
                 .permitAll()
                 .and().rememberMe().key("9D119EE5A2B7DAF6B4DC1EF871D0AC3C")
-                .and().sessionManagement().maximumSessions(1).expiredUrl("/fail").
+                .and().sessionManagement().maximumSessions(2).expiredUrl("/fail").
                 sessionRegistry(sessionRegistry());
     }
 
@@ -69,4 +69,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
+    public static void main(String[] args) {
+        BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
+        System.out.printf("" + bc.encode("root"));
+    }
 }
